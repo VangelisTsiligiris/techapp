@@ -2399,8 +2399,8 @@ def main():
     # FOOTER (appears on all pages)
     # ========================================================================
     
-        st.markdown("---")
-        st.markdown("""
+    st.markdown("---")
+    st.markdown("""
         <div style="text-align: center; padding: 2rem 1rem; background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%); border-radius: 16px; margin-top: 3rem;">
             <p style="color: #1a1a2e; font-size: 0.95rem; margin-bottom: 0.5rem;">
                 <strong style="color: #667eea;">Developed by Professor Vangelis Tsiligkiris</strong>
@@ -2416,7 +2416,7 @@ def main():
                 This tool is provided for educational purposes. Always consult domain experts for production implementations.
             </p>
         </div>
-        """, unsafe_allow_html=True)  
+    """, unsafe_allow_html=True)  
 
 
 if __name__ == "__main__":

@@ -2402,9 +2402,9 @@ def main():
     st.markdown("""
     <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 2.5rem 2rem; margin-top: 3rem;">
        <div style="text-align: center; margin-bottom: 1.5rem;">
-            <h3 style="color: white; margin: 0; font-size: 1.3rem; font-weight: 700;">Fintech AI/ML Advisor</h3>
+            <h3 style="color: white; margin: 0; font-size: 1.3rem; font-weight: 700;">Fintech AI/ML Portal</h3>
             <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-top: 0.5rem;">
-                Educational Tool for MSc Students
+                Educational Tool Students
             </p>
        </div>
     

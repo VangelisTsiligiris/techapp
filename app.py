@@ -11,62 +11,197 @@ import plotly.graph_objects as go
 # Page configuration
 st.set_page_config(
     page_title="Fintech AI/ML Advisor",
-    page_icon="🤖",
+    page_icon="💹",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Professional Custom CSS
 st.markdown("""
 <style>
-    .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1E3A5F;
-        text-align: center;
-        margin-bottom: 1rem;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
     }
+    
+    .main-header {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #0F4C75 0%, #3282B8 50%, #0F4C75 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+    }
+    
     .sub-header {
-        font-size: 1.2rem;
-        color: #666;
+        font-size: 1.1rem;
+        color: #5a6c7d;
         text-align: center;
         margin-bottom: 2rem;
+        font-weight: 400;
     }
+    
+    .section-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1B262C;
+        margin: 1.5rem 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #3282B8;
+    }
+    
     .info-box {
-        background-color: #f0f7ff;
-        border-left: 5px solid #1E88E5;
-        padding: 1rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        border-left: 4px solid #3282B8;
+        padding: 1.25rem;
         margin: 1rem 0;
-        border-radius: 0 8px 8px 0;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
+    
     .success-box {
-        background-color: #e8f5e9;
-        border-left: 5px solid #4CAF50;
-        padding: 1rem;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        border-left: 4px solid #22c55e;
+        padding: 1.25rem;
         margin: 1rem 0;
-        border-radius: 0 8px 8px 0;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
+    
     .warning-box {
-        background-color: #fff3e0;
-        border-left: 5px solid #FF9800;
-        padding: 1rem;
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        border-left: 4px solid #f59e0b;
+        padding: 1.25rem;
         margin: 1rem 0;
-        border-radius: 0 8px 8px 0;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
-    .algorithm-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-    }
+    
     .metric-card {
         background: white;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.5rem;
         text-align: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    
+    .metric-card h3 {
+        color: #1B262C;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .metric-card p {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    
+    .metric-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .nav-item {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+        transition: background 0.2s ease;
+    }
+    
+    .recommendation-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    .recommendation-card.top {
+        border: 2px solid #3282B8;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    }
+    
+    .score-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #3282B8 0%, #0F4C75 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    
+    .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: linear-gradient(135deg, #3282B8 0%, #0F4C75 100%);
+        color: white;
+        border-radius: 50%;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-right: 0.75rem;
+    }
+    
+    .resource-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        background: #f8fafc;
+        border-radius: 8px;
+        margin: 0.5rem 0;
+        text-decoration: none;
+        color: #1B262C;
+        border: 1px solid #e2e8f0;
+        transition: all 0.2s ease;
+    }
+    
+    .resource-link:hover {
+        background: #f0f9ff;
+        border-color: #3282B8;
+        transform: translateX(4px);
+    }
+    
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        background-color: #f1f5f9;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-weight: 500;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background-color: #3282B8 !important;
+        color: white !important;
+    }
+    
+    div[data-testid="stExpander"] {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        margin: 0.5rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    
+    .sidebar .sidebar-content {
+        background: linear-gradient(180deg, #1B262C 0%, #0F4C75 100%);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -174,7 +309,7 @@ ML_ALGORITHMS = {
             "pros": ["Highly interpretable", "Handles non-linear relationships", "No feature scaling needed"],
             "cons": ["Prone to overfitting", "Can be unstable", "May not generalize well"],
             "data_requirements": "Can handle mixed data types",
-            "complexity": "Low to Medium",
+            "complexity": "Low",
             "interpretability": "High"
         },
         "Random Forest": {
@@ -187,14 +322,14 @@ ML_ALGORITHMS = {
             "complexity": "Medium",
             "interpretability": "Medium"
         },
-        "Gradient Boosting (XGBoost, LightGBM)": {
+        "Gradient Boosting (XGBoost/LightGBM)": {
             "type": "Classification/Regression",
             "description": "Sequential ensemble method that builds trees to correct previous errors.",
             "fintech_use_cases": ["Credit risk modeling", "Trading signal prediction", "Customer lifetime value"],
             "pros": ["State-of-the-art performance", "Handles missing values", "Feature importance"],
             "cons": ["Requires careful tuning", "Can overfit with too many trees", "Less interpretable"],
             "data_requirements": "Tabular data, can handle missing values",
-            "complexity": "Medium to High",
+            "complexity": "Medium",
             "interpretability": "Medium"
         },
         "Support Vector Machines (SVM)": {
@@ -207,7 +342,7 @@ ML_ALGORITHMS = {
             "complexity": "Medium",
             "interpretability": "Low"
         },
-        "Neural Networks (Deep Learning)": {
+        "Neural Networks": {
             "type": "Classification/Regression",
             "description": "Multi-layer networks that learn hierarchical representations of data.",
             "fintech_use_cases": ["Complex pattern recognition", "Image-based fraud detection", "NLP for document processing"],
@@ -373,9 +508,232 @@ FINTECH_DOMAINS = {
     }
 }
 
+# Actual resource links
+RESOURCES = {
+    "Books": [
+        {"title": "Machine Learning for Asset Managers", "author": "Marcos López de Prado", "url": "https://www.cambridge.org/core/books/machine-learning-for-asset-managers/6D9211305EA2E425D33A9F38D0AE3545"},
+        {"title": "Advances in Financial Machine Learning", "author": "Marcos López de Prado", "url": "https://www.wiley.com/en-us/Advances+in+Financial+Machine+Learning-p-9781119482086"},
+        {"title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", "author": "Aurélien Géron", "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"},
+        {"title": "Python for Finance", "author": "Yves Hilpisch", "url": "https://www.oreilly.com/library/view/python-for-finance/9781492024323/"},
+        {"title": "Deep Learning", "author": "Ian Goodfellow et al.", "url": "https://www.deeplearningbook.org/"}
+    ],
+    "Online Courses": [
+        {"title": "Machine Learning Specialization", "provider": "Stanford/Coursera", "url": "https://www.coursera.org/specializations/machine-learning-introduction"},
+        {"title": "Deep Learning Specialization", "provider": "DeepLearning.AI/Coursera", "url": "https://www.coursera.org/specializations/deep-learning"},
+        {"title": "Practical Deep Learning for Coders", "provider": "fast.ai", "url": "https://course.fast.ai/"},
+        {"title": "AI for Trading", "provider": "Udacity", "url": "https://www.udacity.com/course/ai-for-trading--nd880"},
+        {"title": "Financial Engineering and Risk Management", "provider": "Columbia/Coursera", "url": "https://www.coursera.org/specializations/financialengineering"}
+    ],
+    "Documentation & Tutorials": [
+        {"title": "Scikit-learn User Guide", "description": "Comprehensive ML library documentation", "url": "https://scikit-learn.org/stable/user_guide.html"},
+        {"title": "XGBoost Documentation", "description": "Gradient boosting framework", "url": "https://xgboost.readthedocs.io/en/stable/"},
+        {"title": "TensorFlow Tutorials", "description": "Deep learning framework tutorials", "url": "https://www.tensorflow.org/tutorials"},
+        {"title": "PyTorch Tutorials", "description": "Deep learning framework tutorials", "url": "https://pytorch.org/tutorials/"},
+        {"title": "Hugging Face Course", "description": "NLP and Transformers", "url": "https://huggingface.co/learn/nlp-course"}
+    ],
+    "Research & Papers": [
+        {"title": "arXiv Quantitative Finance", "description": "Latest research papers", "url": "https://arxiv.org/list/q-fin/recent"},
+        {"title": "Journal of Financial Data Science", "description": "Academic journal", "url": "https://jfds.pm-research.com/"},
+        {"title": "Papers With Code - Finance", "description": "ML papers with implementations", "url": "https://paperswithcode.com/area/finance"},
+        {"title": "SSRN Financial Economics", "description": "Working papers", "url": "https://www.ssrn.com/index.cfm/en/fenetwk/"}
+    ],
+    "Tools & Libraries": [
+        {"title": "scikit-learn", "description": "General ML algorithms", "url": "https://scikit-learn.org/"},
+        {"title": "XGBoost", "description": "Gradient boosting", "url": "https://xgboost.ai/"},
+        {"title": "LightGBM", "description": "Fast gradient boosting", "url": "https://lightgbm.readthedocs.io/"},
+        {"title": "TensorFlow", "description": "Deep learning", "url": "https://www.tensorflow.org/"},
+        {"title": "PyTorch", "description": "Deep learning", "url": "https://pytorch.org/"},
+        {"title": "Prophet", "description": "Time series forecasting", "url": "https://facebook.github.io/prophet/"},
+        {"title": "SHAP", "description": "Model explainability", "url": "https://shap.readthedocs.io/"},
+        {"title": "statsmodels", "description": "Statistical models", "url": "https://www.statsmodels.org/"}
+    ]
+}
+
 # ============================================================================
 # HELPER FUNCTIONS
 # ============================================================================
+
+def create_tradeoff_chart(algorithms):
+    """Create an improved scatter plot with no overlapping labels."""
+    trade_off_data = []
+    
+    for category, algos in algorithms.items():
+        for name, details in algos.items():
+            complexity_map = {"Low": 1, "Medium": 2, "Medium to High": 2.5, "High": 3, "Very High": 4}
+            interpretability_map = {"Very Low": 1, "Low": 2, "Medium": 3, "High": 4}
+            
+            # Create shorter names for display
+            short_names = {
+                "Linear Regression": "Linear Reg.",
+                "Logistic Regression": "Logistic Reg.",
+                "Decision Trees": "Decision Tree",
+                "Random Forest": "Random Forest",
+                "Gradient Boosting (XGBoost/LightGBM)": "XGBoost/LGBM",
+                "Support Vector Machines (SVM)": "SVM",
+                "Neural Networks": "Neural Net",
+                "K-Means Clustering": "K-Means",
+                "Hierarchical Clustering": "Hier. Cluster",
+                "DBSCAN": "DBSCAN",
+                "Principal Component Analysis (PCA)": "PCA",
+                "Autoencoders": "Autoencoder",
+                "Q-Learning": "Q-Learning",
+                "Deep Q-Networks (DQN)": "DQN",
+                "Policy Gradient Methods": "Policy Grad.",
+                "ARIMA/SARIMA": "ARIMA",
+                "LSTM/GRU": "LSTM/GRU",
+                "Prophet": "Prophet",
+                "Isolation Forest": "Isolation For."
+            }
+            
+            trade_off_data.append({
+                "Algorithm": name,
+                "Short_Name": short_names.get(name, name[:15]),
+                "Category": category,
+                "Complexity": complexity_map.get(details.get("complexity", "Medium"), 2),
+                "Interpretability": interpretability_map.get(details.get("interpretability", "Medium"), 3),
+                "Type": details.get("type", "")
+            })
+    
+    df = pd.DataFrame(trade_off_data)
+    
+    # Create figure with Plotly Graph Objects
+    fig = go.Figure()
+    
+    colors = {
+        "Supervised Learning": "#3282B8",
+        "Unsupervised Learning": "#22c55e", 
+        "Reinforcement Learning": "#ef4444",
+        "Time Series & Specialized": "#f59e0b"
+    }
+    
+    # Add scatter points for each category
+    for category in df["Category"].unique():
+        cat_data = df[df["Category"] == category]
+        fig.add_trace(go.Scatter(
+            x=cat_data["Complexity"],
+            y=cat_data["Interpretability"],
+            mode='markers',
+            name=category,
+            marker=dict(
+                size=16,
+                color=colors.get(category, "#666"),
+                line=dict(width=2, color='white'),
+                opacity=0.9
+            ),
+            text=cat_data["Algorithm"],
+            hovertemplate="<b>%{text}</b><br>" +
+                          "Complexity: %{x:.1f}<br>" +
+                          "Interpretability: %{y:.1f}<extra></extra>"
+        ))
+    
+    # Smart label positioning to avoid overlaps
+    # Group points by their approximate position
+    label_positions = []
+    for idx, row in df.iterrows():
+        x, y = row["Complexity"], row["Interpretability"]
+        
+        # Determine text position based on location and nearby points
+        # Check for conflicts
+        x_anchor = "center"
+        y_anchor = "bottom"
+        x_offset = 0
+        y_offset = 0.18
+        
+        # Adjust for edge cases
+        if x >= 3.5:
+            x_anchor = "right"
+            x_offset = -0.1
+        elif x <= 1.5:
+            x_anchor = "left"
+            x_offset = 0.1
+        
+        # Check for vertically stacked points
+        nearby = [(lp["x"], lp["y"]) for lp in label_positions 
+                  if abs(lp["x"] - x) < 0.4 and abs(lp["y"] - y) < 0.5]
+        
+        if nearby:
+            y_offset = 0.3 + 0.15 * len(nearby)
+        
+        label_positions.append({
+            "x": x,
+            "y": y,
+            "text": row["Short_Name"],
+            "x_anchor": x_anchor,
+            "y_anchor": y_anchor,
+            "x_offset": x_offset,
+            "y_offset": y_offset
+        })
+    
+    # Add annotations with calculated positions
+    annotations = []
+    for lp in label_positions:
+        annotations.append(dict(
+            x=lp["x"] + lp["x_offset"],
+            y=lp["y"] + lp["y_offset"],
+            text=lp["text"],
+            showarrow=False,
+            font=dict(size=9, color="#374151"),
+            xanchor=lp["x_anchor"],
+            yanchor=lp["y_anchor"]
+        ))
+    
+    # Add quadrant backgrounds
+    fig.add_shape(type="rect", x0=0.5, y0=2.5, x1=2.25, y1=4.5,
+                  fillcolor="rgba(34, 197, 94, 0.08)", line_width=0)
+    fig.add_shape(type="rect", x0=2.25, y0=2.5, x1=4.5, y1=4.5,
+                  fillcolor="rgba(245, 158, 11, 0.08)", line_width=0)
+    fig.add_shape(type="rect", x0=0.5, y0=0.5, x1=2.25, y1=2.5,
+                  fillcolor="rgba(50, 130, 184, 0.08)", line_width=0)
+    fig.add_shape(type="rect", x0=2.25, y0=0.5, x1=4.5, y1=2.5,
+                  fillcolor="rgba(239, 68, 68, 0.08)", line_width=0)
+    
+    # Add quadrant labels
+    fig.add_annotation(x=1.35, y=4.35, text="◆ Simple & Explainable", 
+                      showarrow=False, font=dict(size=11, color="#22c55e", weight="bold"), opacity=0.8)
+    fig.add_annotation(x=3.35, y=4.35, text="◆ Complex but Explainable", 
+                      showarrow=False, font=dict(size=11, color="#f59e0b", weight="bold"), opacity=0.8)
+    fig.add_annotation(x=1.35, y=0.65, text="◆ Simple but Opaque", 
+                      showarrow=False, font=dict(size=11, color="#3282B8", weight="bold"), opacity=0.8)
+    fig.add_annotation(x=3.35, y=0.65, text="◆ Complex & Opaque", 
+                      showarrow=False, font=dict(size=11, color="#ef4444", weight="bold"), opacity=0.8)
+    
+    fig.update_layout(
+        title=dict(
+            text="Algorithm Trade-offs: Complexity vs Interpretability",
+            font=dict(size=18, color="#1B262C"),
+            x=0.5
+        ),
+        xaxis=dict(
+            title="Complexity",
+            ticktext=["Low", "Medium", "High", "Very High"],
+            tickvals=[1, 2, 3, 4],
+            range=[0.5, 4.5],
+            gridcolor="#e2e8f0",
+            showgrid=True
+        ),
+        yaxis=dict(
+            title="Interpretability", 
+            ticktext=["Very Low", "Low", "Medium", "High"],
+            tickvals=[1, 2, 3, 4],
+            range=[0.5, 4.5],
+            gridcolor="#e2e8f0",
+            showgrid=True
+        ),
+        height=650,
+        plot_bgcolor="white",
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="center",
+            x=0.5,
+            bgcolor="rgba(255,255,255,0.8)"
+        ),
+        annotations=annotations,
+        margin=dict(t=100, b=50)
+    )
+    
+    return fig
 
 def create_comparison_chart(algorithms, metric):
     """Create a comparison chart for algorithms based on a metric."""
@@ -390,106 +748,201 @@ def create_comparison_chart(algorithms, metric):
             else:
                 value = interpretability_map.get(details.get("interpretability", "Medium"), 3)
             
+            # Shorter names
+            short_name = name.split("(")[0].strip()
+            if len(short_name) > 18:
+                short_name = short_name[:15] + "..."
+            
             data.append({
-                "Algorithm": name,
+                "Algorithm": short_name,
                 "Category": category,
                 "Value": value,
                 "Label": details.get(metric, "Medium")
             })
     
     df = pd.DataFrame(data)
+    
+    colors = {
+        "Supervised Learning": "#3282B8",
+        "Unsupervised Learning": "#22c55e", 
+        "Reinforcement Learning": "#ef4444",
+        "Time Series & Specialized": "#f59e0b"
+    }
+    
     fig = px.bar(df, x="Algorithm", y="Value", color="Category",
                  title=f"Algorithm Comparison by {metric.title()}",
-                 hover_data=["Label"])
-    fig.update_layout(xaxis_tickangle=-45, height=500)
+                 hover_data=["Label"],
+                 color_discrete_map=colors)
+    fig.update_layout(
+        xaxis_tickangle=-45, 
+        height=450,
+        plot_bgcolor="white",
+        xaxis=dict(gridcolor="#e2e8f0"),
+        yaxis=dict(gridcolor="#e2e8f0", title=metric.title())
+    )
     return fig
 
-def get_recommendation(answers):
-    """Generate algorithm recommendations based on user answers."""
-    recommendations = []
+def calculate_recommendation_scores(answers):
+    """Calculate detailed scores for each algorithm based on questionnaire answers."""
     scores = {}
+    explanations = {}
     
-    # Initialize scores for all algorithms
+    # Initialize scores
     for category, algos in ML_ALGORITHMS.items():
         for name in algos.keys():
             scores[name] = 0
+            explanations[name] = []
     
-    # Problem type scoring
-    if answers.get("problem_type") == "Classification":
-        for name in ["Logistic Regression", "Random Forest", "Gradient Boosting (XGBoost, LightGBM)", 
-                     "Neural Networks (Deep Learning)", "SVM"]:
-            scores[name] = scores.get(name, 0) + 3
-    elif answers.get("problem_type") == "Regression":
-        for name in ["Linear Regression", "Random Forest", "Gradient Boosting (XGBoost, LightGBM)",
-                     "Neural Networks (Deep Learning)"]:
-            scores[name] = scores.get(name, 0) + 3
-    elif answers.get("problem_type") == "Clustering":
+    # 1. Problem type scoring (highest weight)
+    problem_type = answers.get("problem_type", "")
+    if problem_type == "Binary Classification":
+        for name in ["Logistic Regression", "Random Forest", "Gradient Boosting (XGBoost/LightGBM)", "Neural Networks"]:
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Strong fit for binary classification"]
+    elif problem_type == "Multi-class Classification":
+        for name in ["Random Forest", "Gradient Boosting (XGBoost/LightGBM)", "Neural Networks"]:
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Handles multi-class problems well"]
+    elif problem_type == "Regression / Continuous Prediction":
+        for name in ["Linear Regression", "Random Forest", "Gradient Boosting (XGBoost/LightGBM)", "Neural Networks"]:
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Suitable for continuous predictions"]
+    elif problem_type == "Clustering / Segmentation":
         for name in ["K-Means Clustering", "Hierarchical Clustering", "DBSCAN"]:
-            scores[name] = scores.get(name, 0) + 3
-    elif answers.get("problem_type") == "Anomaly Detection":
-        for name in ["Isolation Forest", "Autoencoders", "DBSCAN"]:
-            scores[name] = scores.get(name, 0) + 3
-    elif answers.get("problem_type") == "Time Series Forecasting":
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Designed for clustering tasks"]
+    elif problem_type == "Anomaly / Fraud Detection":
+        for name in ["Isolation Forest", "Autoencoders", "DBSCAN", "Gradient Boosting (XGBoost/LightGBM)"]:
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Effective for anomaly detection"]
+    elif problem_type == "Time Series Forecasting":
         for name in ["ARIMA/SARIMA", "LSTM/GRU", "Prophet"]:
-            scores[name] = scores.get(name, 0) + 3
-    elif answers.get("problem_type") == "Content Generation":
-        recommendations.append({
-            "type": "Generative AI",
-            "recommendation": "Large Language Models (GPT-style)",
-            "reason": "Content generation requires generative AI capabilities"
-        })
-    elif answers.get("problem_type") == "Sequential Decision Making":
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Specialized for time series"]
+    elif problem_type == "Sequential Decision Making":
         for name in ["Q-Learning", "Deep Q-Networks (DQN)", "Policy Gradient Methods"]:
-            scores[name] = scores.get(name, 0) + 3
+            scores[name] = scores.get(name, 0) + 5
+            explanations[name] = explanations.get(name, []) + ["Designed for sequential decisions"]
+    elif problem_type == "Natural Language Processing":
+        return [{"type": "Generative AI", "recommendation": "Large Language Models (LLMs)", 
+                "reason": "NLP tasks are best handled by transformer-based models like GPT, BERT, or similar LLMs"}]
+    elif problem_type == "Content / Report Generation":
+        return [{"type": "Generative AI", "recommendation": "Generative AI (LLMs, GPT)", 
+                "reason": "Content generation requires generative AI capabilities"}]
     
-    # Data size scoring
-    if answers.get("data_size") == "Small (<1,000 samples)":
-        for name in ["Linear Regression", "Logistic Regression", "Decision Trees"]:
-            scores[name] = scores.get(name, 0) + 2
-        for name in ["Neural Networks (Deep Learning)", "LSTM/GRU", "Deep Q-Networks (DQN)"]:
-            scores[name] = scores.get(name, 0) - 2
-    elif answers.get("data_size") == "Large (>100,000 samples)":
-        for name in ["Neural Networks (Deep Learning)", "Gradient Boosting (XGBoost, LightGBM)"]:
-            scores[name] = scores.get(name, 0) + 2
-    
-    # Interpretability scoring
-    if answers.get("interpretability") == "Critical (Regulatory requirement)":
+    # 2. Data size scoring
+    data_size = answers.get("data_size", "")
+    if data_size == "Very Small (<500 samples)":
         for name in ["Linear Regression", "Logistic Regression", "Decision Trees"]:
             scores[name] = scores.get(name, 0) + 3
-        for name in ["Neural Networks (Deep Learning)", "Autoencoders", "Deep Q-Networks (DQN)"]:
+            explanations[name] = explanations.get(name, []) + ["Works well with limited data"]
+        for name in ["Neural Networks", "LSTM/GRU", "Deep Q-Networks (DQN)", "Autoencoders"]:
             scores[name] = scores.get(name, 0) - 3
-    elif answers.get("interpretability") == "Important":
-        for name in ["Random Forest", "Gradient Boosting (XGBoost, LightGBM)"]:
+            explanations[name] = explanations.get(name, []) + ["Requires more data than available"]
+    elif data_size == "Small (500-5,000 samples)":
+        for name in ["Logistic Regression", "Decision Trees", "Random Forest"]:
+            scores[name] = scores.get(name, 0) + 2
+        for name in ["Neural Networks", "LSTM/GRU"]:
+            scores[name] = scores.get(name, 0) - 2
+    elif data_size == "Large (50,000-500,000 samples)":
+        for name in ["Gradient Boosting (XGBoost/LightGBM)", "Neural Networks"]:
+            scores[name] = scores.get(name, 0) + 2
+    elif data_size == "Very Large (>500,000 samples)":
+        for name in ["Neural Networks", "LSTM/GRU", "Gradient Boosting (XGBoost/LightGBM)"]:
+            scores[name] = scores.get(name, 0) + 3
+            explanations[name] = explanations.get(name, []) + ["Scales well with large data"]
+    
+    # 3. Interpretability scoring
+    interpretability = answers.get("interpretability", "")
+    if interpretability == "Critical - Must explain every decision (regulatory requirement)":
+        for name in ["Linear Regression", "Logistic Regression", "Decision Trees"]:
+            scores[name] = scores.get(name, 0) + 4
+            explanations[name] = explanations.get(name, []) + ["Highly interpretable for regulatory needs"]
+        for name in ["Neural Networks", "Autoencoders", "Deep Q-Networks (DQN)", "LSTM/GRU"]:
+            scores[name] = scores.get(name, 0) - 4
+            explanations[name] = explanations.get(name, []) + ["May not meet interpretability requirements"]
+    elif interpretability == "Important - Need to understand key drivers":
+        for name in ["Random Forest", "Gradient Boosting (XGBoost/LightGBM)"]:
+            scores[name] = scores.get(name, 0) + 2
+            explanations[name] = explanations.get(name, []) + ["Provides feature importance insights"]
+    
+    # 4. Latency requirements
+    latency = answers.get("latency", "")
+    if latency == "Real-time (<10ms)":
+        for name in ["Linear Regression", "Logistic Regression", "Decision Trees"]:
+            scores[name] = scores.get(name, 0) + 2
+            explanations[name] = explanations.get(name, []) + ["Fast inference for real-time use"]
+        for name in ["Neural Networks", "LSTM/GRU"]:
+            scores[name] = scores.get(name, 0) - 1
+    elif latency == "Batch processing is fine":
+        for name in ["Neural Networks", "Gradient Boosting (XGBoost/LightGBM)"]:
             scores[name] = scores.get(name, 0) + 1
     
-    # Real-time scoring
-    if answers.get("real_time") == "Yes":
-        for name in ["Linear Regression", "Logistic Regression", "Decision Trees"]:
-            scores[name] = scores.get(name, 0) + 1
-        for name in ["Neural Networks (Deep Learning)"]:
+    # 5. Data quality
+    data_quality = answers.get("data_quality", "")
+    if data_quality == "Poor - Lots of missing values and noise":
+        for name in ["Gradient Boosting (XGBoost/LightGBM)", "Random Forest"]:
+            scores[name] = scores.get(name, 0) + 2
+            explanations[name] = explanations.get(name, []) + ["Handles missing values well"]
+        for name in ["Linear Regression", "Support Vector Machines (SVM)"]:
             scores[name] = scores.get(name, 0) - 1
     
-    # Sort and get top recommendations
-    sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-    top_algorithms = [alg for alg, score in sorted_scores[:5] if score > 0]
+    # 6. Feature engineering capability
+    feature_eng = answers.get("feature_engineering", "")
+    if feature_eng == "Minimal - Prefer automatic feature learning":
+        for name in ["Neural Networks", "Autoencoders", "LSTM/GRU"]:
+            scores[name] = scores.get(name, 0) + 2
+            explanations[name] = explanations.get(name, []) + ["Automatic feature learning"]
+    elif feature_eng == "Extensive - Will invest in feature engineering":
+        for name in ["Gradient Boosting (XGBoost/LightGBM)", "Random Forest"]:
+            scores[name] = scores.get(name, 0) + 1
     
-    for alg_name in top_algorithms:
-        # Find algorithm details
-        for category, algos in ML_ALGORITHMS.items():
-            if alg_name in algos:
-                details = algos[alg_name]
-                recommendations.append({
-                    "algorithm": alg_name,
-                    "category": category,
-                    "type": details["type"],
-                    "score": scores[alg_name],
-                    "use_cases": details["fintech_use_cases"],
-                    "pros": details["pros"],
-                    "cons": details["cons"],
-                    "complexity": details["complexity"],
-                    "interpretability": details["interpretability"]
-                })
-                break
+    # 7. Team expertise
+    expertise = answers.get("expertise", "")
+    if expertise == "Beginner - New to ML":
+        for name in ["Linear Regression", "Logistic Regression", "Decision Trees", "K-Means Clustering"]:
+            scores[name] = scores.get(name, 0) + 2
+            explanations[name] = explanations.get(name, []) + ["Good starting point for beginners"]
+        for name in ["Neural Networks", "Deep Q-Networks (DQN)", "Policy Gradient Methods"]:
+            scores[name] = scores.get(name, 0) - 2
+    elif expertise == "Expert - Deep ML experience":
+        for name in ["Neural Networks", "LSTM/GRU", "Deep Q-Networks (DQN)"]:
+            scores[name] = scores.get(name, 0) + 1
+    
+    # 8. Labeled data availability
+    labeled_data = answers.get("labeled_data", "")
+    if labeled_data == "No labeled data available":
+        for name in ["K-Means Clustering", "Hierarchical Clustering", "DBSCAN", "Autoencoders", "Isolation Forest", "Principal Component Analysis (PCA)"]:
+            scores[name] = scores.get(name, 0) + 4
+            explanations[name] = explanations.get(name, []) + ["Works without labeled data"]
+        for name in ["Logistic Regression", "Random Forest", "Gradient Boosting (XGBoost/LightGBM)", "Neural Networks"]:
+            scores[name] = scores.get(name, 0) - 3
+    elif labeled_data == "Limited labels (can label some data)":
+        for name in ["Random Forest", "Gradient Boosting (XGBoost/LightGBM)"]:
+            scores[name] = scores.get(name, 0) + 1
+    
+    # Sort and return top recommendations
+    sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    
+    recommendations = []
+    for alg_name, score in sorted_scores[:5]:
+        if score > 0:
+            for category, algos in ML_ALGORITHMS.items():
+                if alg_name in algos:
+                    details = algos[alg_name]
+                    recommendations.append({
+                        "algorithm": alg_name,
+                        "category": category,
+                        "type": details["type"],
+                        "score": score,
+                        "use_cases": details["fintech_use_cases"],
+                        "pros": details["pros"],
+                        "cons": details["cons"],
+                        "complexity": details["complexity"],
+                        "interpretability": details["interpretability"],
+                        "explanations": explanations.get(alg_name, [])
+                    })
+                    break
     
     return recommendations
 
@@ -499,36 +952,57 @@ def get_recommendation(answers):
 
 def main():
     # Sidebar navigation
-    st.sidebar.title("🤖 Navigation")
+    st.sidebar.markdown("""
+    <div style="text-align: center; padding: 1rem 0;">
+        <h2 style="color: #1B262C; margin: 0;">FinAI Advisor</h2>
+        <p style="color: #64748b; font-size: 0.85rem;">ML Decision Support Tool</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.sidebar.markdown("---")
+    
     page = st.sidebar.radio(
-        "Select a section:",
-        ["🏠 Home", "🧠 AI Types", "📊 ML Algorithms", "🎯 Decision Advisor", 
-         "💼 Fintech Use Cases", "📈 Algorithm Comparison", "📚 Resources"]
+        "Navigate to:",
+        ["Home", "AI Types", "ML Algorithms", "Decision Advisor", 
+         "Fintech Use Cases", "Algorithm Comparison", "Resources"],
+        format_func=lambda x: f"{'◆' if x == 'Decision Advisor' else '○'} {x}"
     )
+    
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("""
+    <div style="font-size: 0.8rem; color: #64748b; padding: 0.5rem;">
+        <strong>Quick Links</strong><br>
+        • Use <strong>Decision Advisor</strong> for personalized recommendations<br>
+        • Explore <strong>ML Algorithms</strong> to learn details<br>
+        • Check <strong>Resources</strong> for further learning
+    </div>
+    """, unsafe_allow_html=True)
     
     # ========================================================================
     # HOME PAGE
     # ========================================================================
-    if page == "🏠 Home":
-        st.markdown('<p class="main-header">🤖 Fintech AI/ML Advisor</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Your guide to selecting the right AI/ML approach for fintech innovation</p>', unsafe_allow_html=True)
+    if page == "Home":
+        st.markdown('<p class="main-header">Fintech AI/ML Advisor</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Your intelligent guide to selecting the right AI/ML approach for fintech innovation</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
         
         with col1:
             st.markdown("""
             <div class="metric-card">
-                <h3>🧠 AI Types</h3>
-                <p>Understand Generative vs Analytical AI</p>
+                <div class="metric-icon">◈</div>
+                <h3>AI Types</h3>
+                <p>Generative vs Analytical AI frameworks</p>
             </div>
             """, unsafe_allow_html=True)
             
         with col2:
             st.markdown("""
             <div class="metric-card">
-                <h3>📊 20+ Algorithms</h3>
+                <div class="metric-icon">◇</div>
+                <h3>20+ Algorithms</h3>
                 <p>Comprehensive ML algorithm library</p>
             </div>
             """, unsafe_allow_html=True)
@@ -536,90 +1010,95 @@ def main():
         with col3:
             st.markdown("""
             <div class="metric-card">
-                <h3>🎯 Smart Advisor</h3>
-                <p>Interactive decision support tool</p>
+                <div class="metric-icon">◎</div>
+                <h3>Smart Advisor</h3>
+                <p>Interactive decision support questionnaire</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        with col4:
+            st.markdown("""
+            <div class="metric-card">
+                <div class="metric-icon">◉</div>
+                <h3>Use Cases</h3>
+                <p>Real-world fintech applications</p>
             </div>
             """, unsafe_allow_html=True)
         
         st.markdown("---")
         
-        st.markdown("### 🎓 How to Use This Tool")
+        st.markdown('<p class="section-header">How to Use This Tool</p>', unsafe_allow_html=True)
         
-        st.markdown("""
-        <div class="info-box">
-        <strong>Step 1: Understand the Landscape</strong><br>
-        Start with the <strong>AI Types</strong> section to understand the fundamental difference between 
-        Generative and Analytical AI, and when to use each in fintech.
-        </div>
-        """, unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
         
-        st.markdown("""
-        <div class="info-box">
-        <strong>Step 2: Explore Algorithms</strong><br>
-        Browse the <strong>ML Algorithms</strong> section to learn about different algorithms, 
-        their strengths, weaknesses, and fintech applications.
-        </div>
-        """, unsafe_allow_html=True)
+        with col1:
+            st.markdown("""
+            <div class="info-box">
+                <span class="step-number">1</span><strong>Understand the Landscape</strong><br>
+                Start with the <strong>AI Types</strong> section to understand Generative vs Analytical AI and their fintech applications.
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="info-box">
+                <span class="step-number">2</span><strong>Explore Algorithms</strong><br>
+                Browse <strong>ML Algorithms</strong> to learn about different approaches, their strengths, weaknesses, and use cases.
+            </div>
+            """, unsafe_allow_html=True)
         
-        st.markdown("""
-        <div class="info-box">
-        <strong>Step 3: Get Personalized Recommendations</strong><br>
-        Use the <strong>Decision Advisor</strong> to answer questions about your specific problem 
-        and receive tailored algorithm recommendations.
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class="info-box">
-        <strong>Step 4: Explore Use Cases</strong><br>
-        Check the <strong>Fintech Use Cases</strong> section to see real-world applications 
-        and best practices in different fintech domains.
-        </div>
-        """, unsafe_allow_html=True)
+        with col2:
+            st.markdown("""
+            <div class="success-box">
+                <span class="step-number">3</span><strong>Get Recommendations</strong><br>
+                Use the <strong>Decision Advisor</strong> questionnaire to receive tailored algorithm recommendations for your specific project.
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="info-box">
+                <span class="step-number">4</span><strong>Deep Dive</strong><br>
+                Explore <strong>Use Cases</strong> and <strong>Resources</strong> for implementation guidance and further learning.
+            </div>
+            """, unsafe_allow_html=True)
         
         st.markdown("---")
-        st.markdown("### 🔑 Key Considerations for Fintech AI/ML Projects")
+        st.markdown('<p class="section-header">Key Considerations for Fintech AI/ML</p>', unsafe_allow_html=True)
         
         considerations = pd.DataFrame({
-            "Factor": ["Regulatory Compliance", "Interpretability", "Data Privacy", "Model Validation", "Scalability"],
+            "Factor": ["Regulatory Compliance", "Model Interpretability", "Data Privacy", "Model Governance", "Scalability"],
             "Description": [
-                "Financial regulations (GDPR, CCPA, fair lending) may restrict certain AI approaches",
-                "Many financial decisions require explainable models for audit and compliance",
-                "Customer financial data requires strict privacy controls and anonymization",
-                "Models must be rigorously validated and monitored for drift",
-                "Solutions must handle varying loads and grow with business needs"
+                "GDPR, CCPA, fair lending laws may restrict certain approaches",
+                "Many decisions require explainable models for audit trails",
+                "Financial data requires strict controls and anonymization",
+                "Models need validation, monitoring, and retraining protocols",
+                "Solutions must handle varying loads and growth"
             ],
-            "Impact on AI Choice": [
-                "May favor simpler, interpretable models over black-box approaches",
-                "Consider SHAP, LIME for complex models; prefer inherently interpretable models",
-                "Consider federated learning, differential privacy techniques",
-                "Build comprehensive monitoring and retraining pipelines",
-                "Consider cloud-native, microservices architectures"
+            "Impact on Approach": [
+                "May favor interpretable models over black-box",
+                "Consider SHAP/LIME for complex models",
+                "Explore federated learning, differential privacy",
+                "Build MLOps pipelines from the start",
+                "Design for cloud-native deployment"
             ]
         })
         
-        st.table(considerations)
+        st.dataframe(considerations, use_container_width=True, hide_index=True)
     
     # ========================================================================
     # AI TYPES PAGE
     # ========================================================================
-    elif page == "🧠 AI Types":
-        st.markdown('<p class="main-header">🧠 Types of Artificial Intelligence</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Understanding Generative vs Analytical AI in Fintech</p>', unsafe_allow_html=True)
+    elif page == "AI Types":
+        st.markdown('<p class="main-header">Types of Artificial Intelligence</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Understanding Generative vs Analytical AI in Financial Services</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Overview
-        st.markdown("### 📌 Overview")
-        st.markdown("""
-        In fintech, AI applications generally fall into two broad categories: **Generative AI** and **Analytical AI**. 
-        Understanding the distinction is crucial for selecting the right approach for your specific problem.
-        """)
-        
         # Comparison table
+        st.markdown('<p class="section-header">Side-by-Side Comparison</p>', unsafe_allow_html=True)
+        
         comparison_df = pd.DataFrame({
-            "Aspect": ["Primary Function", "Output", "Key Technologies", "Data Requirements", 
-                      "Interpretability", "Regulatory Fit", "Typical Use Cases"],
+            "Aspect": ["Primary Function", "Output Type", "Key Technologies", "Data Needs", 
+                      "Interpretability", "Regulatory Fit", "Common Fintech Uses"],
             "Generative AI": [
                 "Creates new content",
                 "Text, images, code, synthetic data",
@@ -627,193 +1106,129 @@ def main():
                 "Large unstructured datasets",
                 "Low (black box)",
                 "Challenging - outputs need verification",
-                "Chatbots, report generation, synthetic data"
+                "Chatbots, reports, synthetic data"
             ],
             "Analytical AI": [
                 "Analyzes and predicts",
-                "Predictions, classifications, insights",
+                "Predictions, classifications, scores",
                 "ML algorithms, statistical models",
                 "Structured, labeled data",
                 "Medium to High",
                 "Well-established frameworks",
-                "Credit scoring, fraud detection, forecasting"
+                "Credit scoring, fraud detection"
             ]
         })
         
-        st.table(comparison_df)
+        st.dataframe(comparison_df, use_container_width=True, hide_index=True)
         
         st.markdown("---")
         
-        # Detailed sections for each AI type
-        tab1, tab2 = st.tabs(["🎨 Generative AI", "📊 Analytical AI"])
+        # Tabs for detailed info
+        tab1, tab2 = st.tabs(["Generative AI", "Analytical AI"])
         
         with tab1:
             gen_ai = AI_TYPES["Generative AI"]
-            st.markdown(f"### {gen_ai['description']}")
             
             col1, col2 = st.columns(2)
             
             with col1:
-                st.markdown("#### 🔑 Key Characteristics")
+                st.markdown("#### Key Characteristics")
                 for char in gen_ai["key_characteristics"]:
-                    st.markdown(f"- {char}")
+                    st.markdown(f"• {char}")
                 
-                st.markdown("#### 🛠️ Technologies")
+                st.markdown("#### Core Technologies")
                 for tech in gen_ai["technologies"]:
-                    st.markdown(f"- {tech}")
+                    st.markdown(f"• {tech}")
             
             with col2:
-                st.markdown("#### 💼 Fintech Applications")
+                st.markdown("#### Fintech Applications")
                 for app in gen_ai["fintech_applications"]:
-                    st.markdown(f"- {app}")
+                    st.markdown(f"• {app}")
             
             st.markdown("---")
             
             col3, col4 = st.columns(2)
             
             with col3:
-                st.markdown("#### ✅ Advantages")
+                st.markdown("#### Advantages")
                 for pro in gen_ai["pros"]:
-                    st.success(pro)
+                    st.markdown(f"""
+                    <div class="success-box" style="padding: 0.75rem; margin: 0.25rem 0;">
+                        ✓ {pro}
+                    </div>
+                    """, unsafe_allow_html=True)
             
             with col4:
-                st.markdown("#### ⚠️ Challenges")
+                st.markdown("#### Challenges")
                 for con in gen_ai["cons"]:
-                    st.warning(con)
-            
-            st.markdown("---")
-            st.markdown("#### 🎓 When to Use Generative AI in Fintech")
-            st.markdown("""
-            <div class="success-box">
-            <strong>Best suited for:</strong>
-            <ul>
-                <li>Customer service automation (chatbots, virtual assistants)</li>
-                <li>Document summarization and analysis</li>
-                <li>Generating synthetic data for model training</li>
-                <li>Personalized content generation (reports, insights)</li>
-                <li>Code generation for internal tools</li>
-            </ul>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            st.markdown("""
-            <div class="warning-box">
-            <strong>Exercise caution for:</strong>
-            <ul>
-                <li>Direct financial advice generation (regulatory concerns)</li>
-                <li>Decision-making without human oversight</li>
-                <li>Applications requiring auditability</li>
-            </ul>
-            </div>
-            """, unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div class="warning-box" style="padding: 0.75rem; margin: 0.25rem 0;">
+                        ⚠ {con}
+                    </div>
+                    """, unsafe_allow_html=True)
         
         with tab2:
             ana_ai = AI_TYPES["Analytical AI"]
-            st.markdown(f"### {ana_ai['description']}")
             
             col1, col2 = st.columns(2)
             
             with col1:
-                st.markdown("#### 🔑 Key Characteristics")
+                st.markdown("#### Key Characteristics")
                 for char in ana_ai["key_characteristics"]:
-                    st.markdown(f"- {char}")
+                    st.markdown(f"• {char}")
                 
-                st.markdown("#### 🛠️ Technologies")
+                st.markdown("#### Core Technologies")
                 for tech in ana_ai["technologies"]:
-                    st.markdown(f"- {tech}")
+                    st.markdown(f"• {tech}")
             
             with col2:
-                st.markdown("#### 💼 Fintech Applications")
+                st.markdown("#### Fintech Applications")
                 for app in ana_ai["fintech_applications"]:
-                    st.markdown(f"- {app}")
+                    st.markdown(f"• {app}")
             
             st.markdown("---")
             
             col3, col4 = st.columns(2)
             
             with col3:
-                st.markdown("#### ✅ Advantages")
+                st.markdown("#### Advantages")
                 for pro in ana_ai["pros"]:
-                    st.success(pro)
+                    st.markdown(f"""
+                    <div class="success-box" style="padding: 0.75rem; margin: 0.25rem 0;">
+                        ✓ {pro}
+                    </div>
+                    """, unsafe_allow_html=True)
             
             with col4:
-                st.markdown("#### ⚠️ Challenges")
+                st.markdown("#### Challenges")
                 for con in ana_ai["cons"]:
-                    st.warning(con)
-            
-            st.markdown("---")
-            st.markdown("#### 🎓 When to Use Analytical AI in Fintech")
-            st.markdown("""
-            <div class="success-box">
-            <strong>Best suited for:</strong>
-            <ul>
-                <li>Credit scoring and risk assessment</li>
-                <li>Fraud detection and prevention</li>
-                <li>Algorithmic trading and portfolio optimization</li>
-                <li>Customer segmentation and churn prediction</li>
-                <li>Regulatory compliance and reporting</li>
-            </ul>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Decision framework
-        st.markdown("---")
-        st.markdown("### 🎯 Decision Framework: Generative vs Analytical")
-        
-        fig = go.Figure()
-        
-        fig.add_trace(go.Scatter(
-            x=[1, 2, 3, 4, 5],
-            y=[5, 4, 3, 2, 1],
-            mode='markers+text',
-            name='Generative AI',
-            text=['Chatbots', 'Content Gen', 'Synthetic Data', 'Doc Analysis', 'Code Gen'],
-            textposition='top center',
-            marker=dict(size=20, color='#667eea')
-        ))
-        
-        fig.add_trace(go.Scatter(
-            x=[1, 2, 3, 4, 5],
-            y=[1, 2, 3, 4, 5],
-            mode='markers+text',
-            name='Analytical AI',
-            text=['Credit Score', 'Fraud Detect', 'Trading', 'Risk Mgmt', 'Compliance'],
-            textposition='bottom center',
-            marker=dict(size=20, color='#764ba2')
-        ))
-        
-        fig.update_layout(
-            title="Use Case Mapping",
-            xaxis_title="Interpretability Requirement →",
-            yaxis_title="← Creativity/Generation Need",
-            height=400,
-            showlegend=True
-        )
-        
-        st.plotly_chart(fig, use_container_width=True)
+                    st.markdown(f"""
+                    <div class="warning-box" style="padding: 0.75rem; margin: 0.25rem 0;">
+                        ⚠ {con}
+                    </div>
+                    """, unsafe_allow_html=True)
     
     # ========================================================================
     # ML ALGORITHMS PAGE
     # ========================================================================
-    elif page == "📊 ML Algorithms":
-        st.markdown('<p class="main-header">📊 Machine Learning Algorithms</p>', unsafe_allow_html=True)
+    elif page == "ML Algorithms":
+        st.markdown('<p class="main-header">Machine Learning Algorithms</p>', unsafe_allow_html=True)
         st.markdown('<p class="sub-header">Comprehensive guide to ML algorithms for fintech applications</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Category selector
         category = st.selectbox(
             "Select Algorithm Category:",
-            list(ML_ALGORITHMS.keys())
+            list(ML_ALGORITHMS.keys()),
+            format_func=lambda x: f"● {x}"
         )
         
-        st.markdown(f"### {category}")
+        st.markdown(f'<p class="section-header">{category}</p>', unsafe_allow_html=True)
         
-        # Display algorithms in the selected category
         algorithms = ML_ALGORITHMS[category]
         
         for algo_name, algo_details in algorithms.items():
-            with st.expander(f"📌 {algo_name} ({algo_details['type']})", expanded=False):
+            with st.expander(f"▸ {algo_name} — {algo_details['type']}", expanded=False):
                 col1, col2 = st.columns([2, 1])
                 
                 with col1:
@@ -821,137 +1236,227 @@ def main():
                     
                     st.markdown("**Fintech Use Cases:**")
                     for use_case in algo_details['fintech_use_cases']:
-                        st.markdown(f"- {use_case}")
+                        st.markdown(f"• {use_case}")
                     
-                    st.markdown("**Pros:**")
-                    for pro in algo_details['pros']:
-                        st.markdown(f"- ✅ {pro}")
-                    
-                    st.markdown("**Cons:**")
-                    for con in algo_details['cons']:
-                        st.markdown(f"- ⚠️ {con}")
+                    col_a, col_b = st.columns(2)
+                    with col_a:
+                        st.markdown("**Advantages:**")
+                        for pro in algo_details['pros']:
+                            st.markdown(f"✓ {pro}")
+                    with col_b:
+                        st.markdown("**Limitations:**")
+                        for con in algo_details['cons']:
+                            st.markdown(f"⚠ {con}")
                 
                 with col2:
-                    st.markdown("**Quick Facts:**")
-                    st.info(f"📊 **Complexity:** {algo_details['complexity']}")
-                    st.info(f"🔍 **Interpretability:** {algo_details['interpretability']}")
-                    st.info(f"📁 **Data:** {algo_details['data_requirements']}")
+                    st.markdown("**Quick Reference:**")
+                    st.markdown(f"""
+                    <div class="info-box">
+                        <strong>Complexity:</strong> {algo_details['complexity']}<br>
+                        <strong>Interpretability:</strong> {algo_details['interpretability']}<br>
+                        <strong>Data:</strong> {algo_details['data_requirements']}
+                    </div>
+                    """, unsafe_allow_html=True)
         
         st.markdown("---")
-        st.markdown("### 📊 Algorithm Selection Guide")
+        st.markdown('<p class="section-header">Algorithm Selection Quick Guide</p>', unsafe_allow_html=True)
         
         selection_guide = pd.DataFrame({
             "If you need...": [
                 "High interpretability",
-                "Handle non-linear patterns",
-                "Work with limited data",
-                "Best predictive performance",
-                "Detect anomalies",
-                "Forecast time series",
-                "Segment customers",
-                "Generate content"
+                "Non-linear pattern detection",
+                "Limited training data",
+                "Maximum predictive power",
+                "Anomaly detection",
+                "Time series forecasting",
+                "Customer segmentation"
             ],
-            "Consider...": [
-                "Logistic Regression, Decision Trees, Linear Regression",
+            "Recommended": [
+                "Logistic Regression, Decision Trees",
                 "Random Forest, XGBoost, Neural Networks",
-                "Logistic Regression, Decision Trees, SVM",
+                "Logistic Regression, Decision Trees",
                 "Gradient Boosting, Neural Networks",
-                "Isolation Forest, Autoencoders, DBSCAN",
+                "Isolation Forest, Autoencoders",
                 "ARIMA, LSTM, Prophet",
-                "K-Means, Hierarchical Clustering",
-                "LLMs, GANs (Generative AI)"
+                "K-Means, Hierarchical Clustering"
             ],
-            "Avoid...": [
-                "Deep Neural Networks, Complex Ensembles",
+            "Avoid": [
+                "Neural Networks, Deep Ensembles",
                 "Simple Linear Models",
-                "Deep Learning, Complex Neural Networks",
-                "Simple Linear Models (unless data is linear)",
-                "Standard Classification Models",
-                "Cross-sectional Models",
-                "Supervised Learning (without labels)",
-                "Traditional ML (for generation tasks)"
+                "Deep Learning methods",
+                "Simple Linear Models (if data is complex)",
+                "Standard classifiers without adaptation",
+                "Cross-sectional models",
+                "Supervised methods (without labels)"
             ]
         })
         
-        st.table(selection_guide)
+        st.dataframe(selection_guide, use_container_width=True, hide_index=True)
     
     # ========================================================================
     # DECISION ADVISOR PAGE
     # ========================================================================
-    elif page == "🎯 Decision Advisor":
-        st.markdown('<p class="main-header">🎯 AI/ML Decision Advisor</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Answer a few questions to get personalized algorithm recommendations</p>', unsafe_allow_html=True)
+    elif page == "Decision Advisor":
+        st.markdown('<p class="main-header">AI/ML Decision Advisor</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Answer the questionnaire below to receive personalized algorithm recommendations</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Initialize session state for form
         if 'advisor_submitted' not in st.session_state:
             st.session_state.advisor_submitted = False
         
         with st.form("advisor_form"):
-            st.markdown("### 📋 Tell us about your fintech project")
+            st.markdown('<p class="section-header">Project Assessment Questionnaire</p>', unsafe_allow_html=True)
+            
+            # Question 1: Problem Type
+            st.markdown("#### 1. What type of problem are you trying to solve?")
+            problem_type = st.selectbox(
+                "Select the primary problem type:",
+                [
+                    "Binary Classification",
+                    "Multi-class Classification", 
+                    "Regression / Continuous Prediction",
+                    "Clustering / Segmentation",
+                    "Anomaly / Fraud Detection",
+                    "Time Series Forecasting",
+                    "Sequential Decision Making",
+                    "Natural Language Processing",
+                    "Content / Report Generation"
+                ],
+                label_visibility="collapsed",
+                help="Classification: Yes/No or category prediction | Regression: Numeric prediction | Clustering: Group discovery"
+            )
+            
+            st.markdown("---")
             
             col1, col2 = st.columns(2)
             
             with col1:
-                problem_type = st.selectbox(
-                    "1️⃣ What type of problem are you solving?",
-                    ["Classification", "Regression", "Clustering", "Anomaly Detection", 
-                     "Time Series Forecasting", "Content Generation", "Sequential Decision Making"],
-                    help="Classification: Categorize into groups | Regression: Predict a number | Clustering: Find natural groups"
-                )
-                
+                # Question 2: Data Size
+                st.markdown("#### 2. How much data do you have?")
                 data_size = st.selectbox(
-                    "2️⃣ How much labeled data do you have?",
-                    ["Small (<1,000 samples)", "Medium (1,000 - 100,000 samples)", 
-                     "Large (>100,000 samples)", "No labeled data"],
-                    help="The amount of data significantly impacts algorithm choice"
+                    "Data size:",
+                    [
+                        "Very Small (<500 samples)",
+                        "Small (500-5,000 samples)",
+                        "Medium (5,000-50,000 samples)",
+                        "Large (50,000-500,000 samples)",
+                        "Very Large (>500,000 samples)"
+                    ],
+                    label_visibility="collapsed"
                 )
                 
-                interpretability = st.selectbox(
-                    "3️⃣ How important is model interpretability?",
-                    ["Critical (Regulatory requirement)", "Important", "Nice to have", "Not important"],
-                    help="Regulated industries often require explainable models"
+                # Question 3: Labeled Data
+                st.markdown("#### 3. Do you have labeled/target data?")
+                labeled_data = st.selectbox(
+                    "Labeled data availability:",
+                    [
+                        "Yes - Fully labeled dataset",
+                        "Partial - Some data is labeled",
+                        "Limited labels (can label some data)",
+                        "No labeled data available"
+                    ],
+                    label_visibility="collapsed"
+                )
+                
+                # Question 4: Data Quality
+                st.markdown("#### 4. What is your data quality?")
+                data_quality = st.selectbox(
+                    "Data quality:",
+                    [
+                        "Excellent - Clean, complete data",
+                        "Good - Minor issues, mostly complete",
+                        "Fair - Some missing values and inconsistencies",
+                        "Poor - Lots of missing values and noise"
+                    ],
+                    label_visibility="collapsed"
+                )
+                
+                # Question 5: Feature Engineering
+                st.markdown("#### 5. Feature engineering capacity?")
+                feature_engineering = st.selectbox(
+                    "Feature engineering:",
+                    [
+                        "Extensive - Will invest in feature engineering",
+                        "Moderate - Some feature engineering possible",
+                        "Minimal - Prefer automatic feature learning"
+                    ],
+                    label_visibility="collapsed"
                 )
             
             with col2:
-                real_time = st.selectbox(
-                    "4️⃣ Do you need real-time predictions?",
-                    ["Yes", "No", "Near real-time (seconds)"],
-                    help="Real-time needs may limit model complexity"
+                # Question 6: Interpretability
+                st.markdown("#### 6. How important is model interpretability?")
+                interpretability = st.selectbox(
+                    "Interpretability requirement:",
+                    [
+                        "Critical - Must explain every decision (regulatory requirement)",
+                        "Important - Need to understand key drivers",
+                        "Moderate - Some explanation helpful",
+                        "Low - Accuracy is the priority"
+                    ],
+                    label_visibility="collapsed"
                 )
                 
+                # Question 7: Latency
+                st.markdown("#### 7. What are your latency requirements?")
+                latency = st.selectbox(
+                    "Latency needs:",
+                    [
+                        "Real-time (<10ms)",
+                        "Near real-time (<1 second)",
+                        "Fast (<10 seconds)",
+                        "Batch processing is fine"
+                    ],
+                    label_visibility="collapsed"
+                )
+                
+                # Question 8: Team Expertise
+                st.markdown("#### 8. What is your team's ML expertise?")
+                expertise = st.selectbox(
+                    "Team expertise:",
+                    [
+                        "Beginner - New to ML",
+                        "Intermediate - Some ML experience",
+                        "Advanced - Strong ML background",
+                        "Expert - Deep ML experience"
+                    ],
+                    label_visibility="collapsed"
+                )
+                
+                # Question 9: Domain
+                st.markdown("#### 9. What fintech domain is this for?")
                 domain = st.selectbox(
-                    "5️⃣ What fintech domain is this for?",
+                    "Fintech domain:",
                     list(FINTECH_DOMAINS.keys()),
-                    help="Different domains have different best practices"
-                )
-                
-                team_expertise = st.selectbox(
-                    "6️⃣ What is your team's ML expertise level?",
-                    ["Beginner", "Intermediate", "Advanced", "Expert"],
-                    help="Some algorithms require more expertise to implement correctly"
+                    label_visibility="collapsed"
                 )
             
             st.markdown("---")
             
+            # Question 10: Project Description
+            st.markdown("#### 10. Describe your project briefly (optional)")
             project_description = st.text_area(
-                "7️⃣ Briefly describe your project (optional):",
-                placeholder="E.g., 'We want to predict which loan applicants will default based on their application data and credit history...'",
-                height=100
+                "Project description:",
+                placeholder="E.g., 'We want to predict which loan applicants will default based on application data and credit history to automate initial credit decisions...'",
+                height=100,
+                label_visibility="collapsed"
             )
             
-            submitted = st.form_submit_button("🚀 Get Recommendations", use_container_width=True)
+            submitted = st.form_submit_button("▶ Generate Recommendations", use_container_width=True)
         
         if submitted:
             st.session_state.advisor_submitted = True
             st.session_state.answers = {
                 "problem_type": problem_type,
                 "data_size": data_size,
+                "labeled_data": labeled_data,
+                "data_quality": data_quality,
+                "feature_engineering": feature_engineering,
                 "interpretability": interpretability,
-                "real_time": real_time,
+                "latency": latency,
+                "expertise": expertise,
                 "domain": domain,
-                "team_expertise": team_expertise,
                 "project_description": project_description
             }
         
@@ -959,386 +1464,419 @@ def main():
             answers = st.session_state.answers
             
             st.markdown("---")
-            st.markdown("## 🎯 Your Personalized Recommendations")
+            st.markdown('<p class="section-header">Your Personalized Recommendations</p>', unsafe_allow_html=True)
             
-            recommendations = get_recommendation(answers)
+            recommendations = calculate_recommendation_scores(answers)
             
             if recommendations:
-                # Check if it's a generative AI recommendation
+                # Generative AI recommendation
                 gen_ai_recs = [r for r in recommendations if r.get("type") == "Generative AI"]
                 ml_recs = [r for r in recommendations if r.get("algorithm")]
                 
                 if gen_ai_recs:
-                    st.markdown("### 🎨 Generative AI Recommendation")
+                    st.markdown("#### Generative AI Recommendation")
                     for rec in gen_ai_recs:
                         st.markdown(f"""
                         <div class="success-box">
-                        <h4>💡 {rec['recommendation']}</h4>
-                        <p>{rec['reason']}</p>
-                        <p><strong>Consider:</strong> GPT-4, Claude, or similar LLMs for text generation; 
-                        GANs or Diffusion Models for image/data generation.</p>
+                            <h4 style="margin-top: 0;">▸ {rec['recommendation']}</h4>
+                            <p>{rec['reason']}</p>
+                            <p><strong>Consider:</strong> GPT-4, Claude, Llama, or BERT-based models for NLP tasks; 
+                            GANs or Diffusion Models for synthetic data generation.</p>
                         </div>
                         """, unsafe_allow_html=True)
                 
                 if ml_recs:
-                    st.markdown("### 📊 Top Algorithm Recommendations")
+                    st.markdown("#### Top Algorithm Recommendations")
                     
                     for i, rec in enumerate(ml_recs[:3], 1):
-                        score_color = "🥇" if i == 1 else "🥈" if i == 2 else "🥉"
+                        rank_label = ["Top Choice", "Strong Alternative", "Also Consider"][i-1]
                         
-                        with st.expander(f"{score_color} #{i}: {rec['algorithm']} (Score: {rec['score']})", expanded=(i==1)):
+                        with st.expander(f"{'▸' if i == 1 else '▹'} #{i}: {rec['algorithm']} — {rank_label} (Score: {rec['score']})", expanded=(i==1)):
                             col1, col2 = st.columns([2, 1])
                             
                             with col1:
                                 st.markdown(f"**Category:** {rec['category']}")
                                 st.markdown(f"**Type:** {rec['type']}")
                                 
-                                st.markdown("**Why this algorithm?**")
+                                if rec.get('explanations'):
+                                    st.markdown("**Why this recommendation:**")
+                                    for exp in rec['explanations'][:3]:
+                                        st.markdown(f"• {exp}")
+                                
+                                st.markdown("**Fintech Use Cases:**")
                                 for use_case in rec['use_cases'][:3]:
-                                    st.markdown(f"- {use_case}")
+                                    st.markdown(f"• {use_case}")
                                 
-                                st.markdown("**Pros:**")
-                                for pro in rec['pros'][:3]:
-                                    st.markdown(f"- ✅ {pro}")
-                                
-                                st.markdown("**Cons:**")
-                                for con in rec['cons'][:2]:
-                                    st.markdown(f"- ⚠️ {con}")
+                                col_a, col_b = st.columns(2)
+                                with col_a:
+                                    st.markdown("**Pros:**")
+                                    for pro in rec['pros'][:3]:
+                                        st.markdown(f"✓ {pro}")
+                                with col_b:
+                                    st.markdown("**Cons:**")
+                                    for con in rec['cons'][:2]:
+                                        st.markdown(f"⚠ {con}")
                             
                             with col2:
-                                st.metric("Complexity", rec['complexity'])
-                                st.metric("Interpretability", rec['interpretability'])
+                                st.markdown(f"""
+                                <div class="info-box">
+                                    <strong>Complexity:</strong><br>{rec['complexity']}<br><br>
+                                    <strong>Interpretability:</strong><br>{rec['interpretability']}
+                                </div>
+                                """, unsafe_allow_html=True)
                 
-                # Domain-specific advice
+                # Domain insights
                 st.markdown("---")
-                st.markdown(f"### 💼 {answers['domain']} Domain Insights")
+                st.markdown(f'<p class="section-header">{answers["domain"]} Domain Insights</p>', unsafe_allow_html=True)
                 
                 domain_info = FINTECH_DOMAINS[answers['domain']]
                 
                 col1, col2 = st.columns(2)
                 
                 with col1:
-                    st.markdown("**Common Problems in this Domain:**")
+                    st.markdown("**Common Problems:**")
                     for problem in domain_info['problems']:
-                        st.markdown(f"- {problem}")
+                        st.markdown(f"• {problem}")
                 
                 with col2:
                     st.markdown("**Recommended Approaches:**")
                     for approach in domain_info['recommended_approaches']:
-                        st.markdown(f"- {approach}")
+                        st.markdown(f"• {approach}")
                 
                 # Next steps
                 st.markdown("---")
-                st.markdown("### 📝 Recommended Next Steps")
+                st.markdown('<p class="section-header">Recommended Next Steps</p>', unsafe_allow_html=True)
                 
                 steps = [
-                    "**Data Assessment:** Evaluate your data quality, completeness, and potential biases",
-                    "**Proof of Concept:** Start with a simple model to establish a baseline",
-                    "**Iterate:** Gradually increase complexity if needed",
-                    "**Validation:** Implement proper cross-validation and out-of-time testing",
-                    "**Compliance Check:** Ensure your approach meets regulatory requirements",
-                    "**Monitoring:** Plan for model monitoring and retraining"
+                    ("Data Assessment", "Evaluate data quality, completeness, and potential biases"),
+                    ("Baseline Model", "Start with a simple interpretable model to establish baseline performance"),
+                    ("Iterative Improvement", "Gradually increase complexity only if needed"),
+                    ("Validation", "Implement proper cross-validation and out-of-time testing"),
+                    ("Compliance Review", "Ensure approach meets regulatory requirements for your domain"),
+                    ("MLOps Planning", "Design monitoring, retraining, and deployment pipelines")
                 ]
                 
-                for i, step in enumerate(steps, 1):
-                    st.markdown(f"{i}. {step}")
-            
-            else:
-                st.warning("Please answer more questions to get recommendations.")
+                for i, (step_title, step_desc) in enumerate(steps, 1):
+                    st.markdown(f"""
+                    <div class="info-box" style="padding: 0.75rem;">
+                        <span class="step-number">{i}</span><strong>{step_title}</strong><br>
+                        <span style="color: #64748b;">{step_desc}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
     
     # ========================================================================
     # FINTECH USE CASES PAGE
     # ========================================================================
-    elif page == "💼 Fintech Use Cases":
-        st.markdown('<p class="main-header">💼 Fintech Use Cases</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Real-world AI/ML applications across fintech domains</p>', unsafe_allow_html=True)
+    elif page == "Fintech Use Cases":
+        st.markdown('<p class="main-header">Fintech Use Cases</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Real-world AI/ML applications across financial services domains</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        domain = st.selectbox("Select a Fintech Domain:", list(FINTECH_DOMAINS.keys()))
+        domain = st.selectbox("Select Domain:", list(FINTECH_DOMAINS.keys()))
         
-        st.markdown(f"## {domain}")
+        st.markdown(f'<p class="section-header">{domain}</p>', unsafe_allow_html=True)
         
         domain_info = FINTECH_DOMAINS[domain]
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("### 🎯 Key Problems")
+            st.markdown("#### Key Problems")
             for problem in domain_info['problems']:
-                st.info(problem)
+                st.markdown(f"""
+                <div class="info-box" style="padding: 0.75rem;">
+                    ◇ {problem}
+                </div>
+                """, unsafe_allow_html=True)
         
         with col2:
-            st.markdown("### 🛠️ Recommended Approaches")
+            st.markdown("#### Recommended Approaches")
             for approach in domain_info['recommended_approaches']:
-                st.success(approach)
+                st.markdown(f"""
+                <div class="success-box" style="padding: 0.75rem;">
+                    ◆ {approach}
+                </div>
+                """, unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Detailed use case cards
-        st.markdown("### 📚 Detailed Use Cases")
-        
+        # Detailed use cases
         use_cases = {
             "Payments & Transactions": [
                 {
                     "title": "Real-time Fraud Detection",
-                    "description": "Detect fraudulent transactions as they occur using ML models that analyze transaction patterns, device fingerprints, and behavioral biometrics.",
+                    "description": "Detect fraudulent transactions in real-time using behavioral patterns, device fingerprints, and transaction history.",
                     "algorithms": ["XGBoost", "Neural Networks", "Isolation Forest"],
-                    "challenges": ["Low latency requirements", "Class imbalance", "Evolving fraud patterns"],
-                    "success_metrics": ["Fraud detection rate", "False positive rate", "Processing time"]
+                    "challenges": ["Low latency requirements", "Extreme class imbalance", "Evolving fraud patterns"],
+                    "metrics": ["Fraud detection rate", "False positive rate", "Processing latency"]
                 },
                 {
                     "title": "Transaction Categorization",
-                    "description": "Automatically categorize transactions for personal finance management apps and accounting software.",
-                    "algorithms": ["NLP + Classification", "BERT-based models", "Random Forest"],
-                    "challenges": ["Merchant name variations", "Multi-language support", "New merchant categories"],
-                    "success_metrics": ["Classification accuracy", "Coverage rate", "User correction rate"]
+                    "description": "Automatically categorize transactions for PFM apps and accounting systems using merchant data and descriptions.",
+                    "algorithms": ["BERT/NLP models", "Random Forest", "Gradient Boosting"],
+                    "challenges": ["Merchant name variations", "Multi-language support", "New categories"],
+                    "metrics": ["Classification accuracy", "Coverage rate", "User correction rate"]
                 }
             ],
             "Lending & Credit": [
                 {
                     "title": "Credit Scoring",
-                    "description": "Assess creditworthiness using traditional and alternative data sources to predict loan default probability.",
-                    "algorithms": ["Logistic Regression", "XGBoost", "Neural Networks with explainability"],
-                    "challenges": ["Regulatory compliance", "Fair lending requirements", "Model interpretability"],
-                    "success_metrics": ["AUC-ROC", "Gini coefficient", "Approval rate at target default rate"]
+                    "description": "Assess creditworthiness using traditional and alternative data to predict default probability.",
+                    "algorithms": ["Logistic Regression", "XGBoost", "Neural Networks + SHAP"],
+                    "challenges": ["Regulatory compliance", "Fair lending", "Interpretability"],
+                    "metrics": ["AUC-ROC", "Gini coefficient", "KS statistic"]
                 },
                 {
-                    "title": "Dynamic Loan Pricing",
-                    "description": "Optimize interest rates based on risk assessment, market conditions, and competitive positioning.",
-                    "algorithms": ["Gradient Boosting", "Reinforcement Learning", "Optimization algorithms"],
-                    "challenges": ["Balance risk and competitiveness", "Regulatory pricing constraints", "Market dynamics"],
-                    "success_metrics": ["Portfolio yield", "Default rate", "Market share"]
+                    "title": "Early Warning Systems",
+                    "description": "Identify borrowers at risk of default before they miss payments using behavioral signals.",
+                    "algorithms": ["Survival Analysis", "LSTM", "Gradient Boosting"],
+                    "challenges": ["Lead time requirements", "Signal noise", "Action timing"],
+                    "metrics": ["Early detection rate", "False alarm rate", "Time to default"]
                 }
             ],
             "Investment & Trading": [
                 {
                     "title": "Algorithmic Trading",
-                    "description": "Develop automated trading strategies using ML to identify patterns and execute trades.",
+                    "description": "Develop automated trading strategies using pattern recognition and market signal analysis.",
                     "algorithms": ["LSTM", "Reinforcement Learning", "Ensemble methods"],
-                    "challenges": ["Market regime changes", "Transaction costs", "Overfitting to historical data"],
-                    "success_metrics": ["Sharpe ratio", "Maximum drawdown", "Alpha generation"]
+                    "challenges": ["Market regime changes", "Transaction costs", "Overfitting"],
+                    "metrics": ["Sharpe ratio", "Maximum drawdown", "Alpha generation"]
                 },
                 {
                     "title": "Portfolio Optimization",
-                    "description": "Construct and rebalance portfolios to maximize returns for given risk levels using ML-enhanced optimization.",
-                    "algorithms": ["Mean-Variance Optimization", "Deep Learning", "RL for dynamic allocation"],
-                    "challenges": ["Estimation error", "Transaction costs", "Changing correlations"],
-                    "success_metrics": ["Risk-adjusted returns", "Tracking error", "Turnover"]
+                    "description": "Construct and rebalance portfolios using ML-enhanced optimization for risk-adjusted returns.",
+                    "algorithms": ["Mean-Variance + ML", "Deep Learning", "RL for allocation"],
+                    "challenges": ["Estimation error", "Transaction costs", "Correlation instability"],
+                    "metrics": ["Risk-adjusted returns", "Tracking error", "Turnover"]
                 }
             ],
             "Insurance": [
                 {
                     "title": "Claims Prediction",
-                    "description": "Predict insurance claims likelihood and severity for pricing and reserving purposes.",
+                    "description": "Predict claim likelihood and severity for pricing and reserving using policyholder data.",
                     "algorithms": ["GLMs", "XGBoost", "Survival Analysis"],
-                    "challenges": ["Long-tail distributions", "Regulatory requirements", "Data quality"],
-                    "success_metrics": ["Loss ratio", "Combined ratio", "Prediction accuracy"]
+                    "challenges": ["Long-tail distributions", "Regulatory requirements", "Data sparsity"],
+                    "metrics": ["Loss ratio", "Reserve accuracy", "Prediction interval"]
                 },
                 {
                     "title": "Underwriting Automation",
-                    "description": "Automate underwriting decisions using ML models that assess risk from application data.",
-                    "algorithms": ["Decision Trees", "Gradient Boosting", "Rule engines + ML hybrid"],
-                    "challenges": ["Explainability requirements", "Edge cases", "Regulatory approval"],
-                    "success_metrics": ["Straight-through processing rate", "Loss ratio by segment", "Processing time"]
+                    "description": "Automate risk assessment and policy pricing using application data and external sources.",
+                    "algorithms": ["Decision Trees", "Gradient Boosting", "Rules + ML hybrid"],
+                    "challenges": ["Explainability needs", "Edge cases", "Regulatory approval"],
+                    "metrics": ["STP rate", "Loss ratio by segment", "Processing time"]
                 }
             ],
             "RegTech & Compliance": [
                 {
-                    "title": "Anti-Money Laundering (AML)",
-                    "description": "Detect suspicious transaction patterns and potential money laundering activities using ML.",
+                    "title": "Anti-Money Laundering",
+                    "description": "Detect suspicious patterns and potential money laundering using transaction network analysis.",
                     "algorithms": ["Graph Neural Networks", "Anomaly Detection", "Network Analysis"],
-                    "challenges": ["High false positive rates", "Evolving typologies", "Regulatory expectations"],
-                    "success_metrics": ["SAR quality", "Alert-to-case ratio", "Detection rate"]
+                    "challenges": ["High false positive rates", "Evolving typologies", "Regulatory scrutiny"],
+                    "metrics": ["SAR quality", "Alert-to-case ratio", "Detection rate"]
                 },
                 {
                     "title": "KYC Automation",
-                    "description": "Automate Know Your Customer processes using document processing and verification ML.",
+                    "description": "Automate identity verification and document processing using OCR and NLP.",
                     "algorithms": ["OCR + NLP", "Face Recognition", "Document Classification"],
                     "challenges": ["Document variations", "Fraud attempts", "Global compliance"],
-                    "success_metrics": ["Automation rate", "Accuracy", "Processing time"]
+                    "metrics": ["Automation rate", "Accuracy", "Processing time"]
                 }
             ],
             "Customer Experience": [
                 {
-                    "title": "Intelligent Chatbots",
-                    "description": "Deploy conversational AI to handle customer inquiries, transactions, and financial advice.",
-                    "algorithms": ["LLMs (GPT, Claude)", "Intent Classification", "Retrieval-Augmented Generation"],
-                    "challenges": ["Accuracy for financial queries", "Escalation handling", "Regulatory compliance"],
-                    "success_metrics": ["Containment rate", "CSAT", "Query resolution time"]
+                    "title": "Intelligent Virtual Assistants",
+                    "description": "Deploy conversational AI for customer service, transactions, and financial guidance.",
+                    "algorithms": ["LLMs (GPT, Claude)", "Intent Classification", "RAG"],
+                    "challenges": ["Accuracy for financial queries", "Escalation handling", "Compliance"],
+                    "metrics": ["Containment rate", "CSAT", "Resolution time"]
                 },
                 {
-                    "title": "Personalized Recommendations",
-                    "description": "Provide personalized product recommendations based on customer behavior and financial profile.",
-                    "algorithms": ["Collaborative Filtering", "Content-based Filtering", "Deep Learning Recommenders"],
-                    "challenges": ["Cold start problem", "Privacy concerns", "Regulatory constraints"],
-                    "success_metrics": ["Conversion rate", "Cross-sell ratio", "Customer engagement"]
+                    "title": "Churn Prediction",
+                    "description": "Identify customers likely to leave and trigger retention actions using behavioral signals.",
+                    "algorithms": ["XGBoost", "Survival Analysis", "Neural Networks"],
+                    "challenges": ["Definition of churn", "Action timing", "Causal inference"],
+                    "metrics": ["Churn prediction accuracy", "Retention rate lift", "ROI"]
                 }
             ]
         }
         
         if domain in use_cases:
+            st.markdown("#### Detailed Use Cases")
+            
             for use_case in use_cases[domain]:
-                with st.expander(f"📌 {use_case['title']}", expanded=True):
+                with st.expander(f"▸ {use_case['title']}", expanded=True):
                     st.markdown(f"**{use_case['description']}**")
                     
                     col1, col2, col3 = st.columns(3)
                     
                     with col1:
-                        st.markdown("**Recommended Algorithms:**")
+                        st.markdown("**Algorithms:**")
                         for algo in use_case['algorithms']:
-                            st.markdown(f"- {algo}")
+                            st.markdown(f"• {algo}")
                     
                     with col2:
-                        st.markdown("**Key Challenges:**")
+                        st.markdown("**Challenges:**")
                         for challenge in use_case['challenges']:
-                            st.markdown(f"- ⚠️ {challenge}")
+                            st.markdown(f"• {challenge}")
                     
                     with col3:
                         st.markdown("**Success Metrics:**")
-                        for metric in use_case['success_metrics']:
-                            st.markdown(f"- 📊 {metric}")
+                        for metric in use_case['metrics']:
+                            st.markdown(f"• {metric}")
     
     # ========================================================================
     # ALGORITHM COMPARISON PAGE
     # ========================================================================
-    elif page == "📈 Algorithm Comparison":
-        st.markdown('<p class="main-header">📈 Algorithm Comparison</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Compare algorithms across different dimensions</p>', unsafe_allow_html=True)
+    elif page == "Algorithm Comparison":
+        st.markdown('<p class="main-header">Algorithm Comparison</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Visual comparison of algorithms across key dimensions</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Complexity comparison
-        st.markdown("### 📊 Complexity Comparison")
-        fig_complexity = create_comparison_chart(ML_ALGORITHMS, "complexity")
-        st.plotly_chart(fig_complexity, use_container_width=True)
+        # Main trade-off chart
+        st.markdown('<p class="section-header">Complexity vs Interpretability Trade-off</p>', unsafe_allow_html=True)
         
-        # Interpretability comparison
-        st.markdown("### 🔍 Interpretability Comparison")
-        fig_interpret = create_comparison_chart(ML_ALGORITHMS, "interpretability")
-        st.plotly_chart(fig_interpret, use_container_width=True)
-        
-        # Trade-off visualization
-        st.markdown("### ⚖️ Complexity vs Interpretability Trade-off")
-        
-        trade_off_data = []
-        for category, algos in ML_ALGORITHMS.items():
-            for name, details in algos.items():
-                complexity_map = {"Low": 1, "Medium": 2, "Medium to High": 2.5, "High": 3, "Very High": 4}
-                interpretability_map = {"Very Low": 1, "Low": 2, "Medium": 3, "High": 4}
-                
-                trade_off_data.append({
-                    "Algorithm": name,
-                    "Category": category,
-                    "Complexity": complexity_map.get(details.get("complexity", "Medium"), 2),
-                    "Interpretability": interpretability_map.get(details.get("interpretability", "Medium"), 3)
-                })
-        
-        df_trade_off = pd.DataFrame(trade_off_data)
-        
-        fig_trade = px.scatter(
-            df_trade_off,
-            x="Complexity",
-            y="Interpretability",
-            color="Category",
-            text="Algorithm",
-            title="Algorithm Trade-offs: Complexity vs Interpretability",
-            labels={"Complexity": "Complexity (1=Low, 4=Very High)", 
-                   "Interpretability": "Interpretability (1=Very Low, 4=High)"}
-        )
-        fig_trade.update_traces(textposition='top center')
-        fig_trade.update_layout(height=600)
-        st.plotly_chart(fig_trade, use_container_width=True)
+        fig_tradeoff = create_tradeoff_chart(ML_ALGORITHMS)
+        st.plotly_chart(fig_tradeoff, use_container_width=True)
         
         st.markdown("""
         <div class="info-box">
-        <strong>💡 Key Insight:</strong> There's often a trade-off between model complexity and interpretability. 
-        For regulated fintech applications, you may need to sacrifice some predictive performance for explainability.
+            <strong>Reading the Chart:</strong> Algorithms in the top-left quadrant (simple & explainable) are ideal for 
+            regulated applications. Bottom-right algorithms (complex & opaque) offer higher performance but require 
+            explainability tools like SHAP for compliance.
         </div>
         """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Individual comparisons
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown('<p class="section-header">Complexity Comparison</p>', unsafe_allow_html=True)
+            fig_complexity = create_comparison_chart(ML_ALGORITHMS, "complexity")
+            st.plotly_chart(fig_complexity, use_container_width=True)
+        
+        with col2:
+            st.markdown('<p class="section-header">Interpretability Comparison</p>', unsafe_allow_html=True)
+            fig_interpret = create_comparison_chart(ML_ALGORITHMS, "interpretability")
+            st.plotly_chart(fig_interpret, use_container_width=True)
     
     # ========================================================================
     # RESOURCES PAGE
     # ========================================================================
-    elif page == "📚 Resources":
-        st.markdown('<p class="main-header">📚 Learning Resources</p>', unsafe_allow_html=True)
-        st.markdown('<p class="sub-header">Further reading and tools for fintech AI/ML</p>', unsafe_allow_html=True)
+    elif page == "Resources":
+        st.markdown('<p class="main-header">Learning Resources</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sub-header">Curated resources for deepening your AI/ML knowledge in fintech</p>', unsafe_allow_html=True)
         
         st.markdown("---")
         
-        st.markdown("### 📖 Recommended Reading")
+        # Books
+        st.markdown('<p class="section-header">Books</p>', unsafe_allow_html=True)
         
-        resources = {
-            "Books": [
-                "Machine Learning for Asset Managers - Marcos López de Prado",
-                "Advances in Financial Machine Learning - Marcos López de Prado",
-                "Deep Learning for Finance - Jannes Klaas",
-                "Python for Finance - Yves Hilpisch",
-                "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow - Aurélien Géron"
-            ],
-            "Research Papers": [
-                "XGBoost: A Scalable Tree Boosting System",
-                "Attention Is All You Need (Transformers)",
-                "Deep Learning in Finance: A Literature Review",
-                "Explainable AI for Credit Scoring"
-            ],
-            "Online Courses": [
-                "Coursera: Machine Learning Specialization",
-                "Fast.ai: Practical Deep Learning",
-                "Udacity: AI for Trading Nanodegree",
-                "edX: Fintech courses from various universities"
-            ]
-        }
-        
-        for category, items in resources.items():
-            st.markdown(f"#### {category}")
-            for item in items:
-                st.markdown(f"- {item}")
+        for book in RESOURCES["Books"]:
+            st.markdown(f"""
+            <a href="{book['url']}" target="_blank" class="resource-link">
+                <strong>{book['title']}</strong><br>
+                <span style="color: #64748b;">by {book['author']}</span>
+            </a>
+            """, unsafe_allow_html=True)
         
         st.markdown("---")
         
-        st.markdown("### 🛠️ Useful Python Libraries")
+        # Online Courses
+        st.markdown('<p class="section-header">Online Courses</p>', unsafe_allow_html=True)
         
-        libraries = pd.DataFrame({
-            "Category": ["General ML", "General ML", "Deep Learning", "Deep Learning", 
-                        "Time Series", "Explainability", "Visualization", "Data Processing"],
-            "Library": ["scikit-learn", "XGBoost/LightGBM", "TensorFlow", "PyTorch",
-                       "Prophet/statsmodels", "SHAP/LIME", "Plotly/Matplotlib", "Pandas/NumPy"],
-            "Use Case": [
-                "Traditional ML algorithms, preprocessing, evaluation",
-                "Gradient boosting, tabular data",
-                "Deep learning, production deployment",
-                "Deep learning, research",
-                "Time series forecasting",
-                "Model interpretability",
-                "Data visualization",
-                "Data manipulation and analysis"
-            ]
-        })
+        col1, col2 = st.columns(2)
+        courses = RESOURCES["Online Courses"]
         
-        st.table(libraries)
+        for i, course in enumerate(courses):
+            with col1 if i % 2 == 0 else col2:
+                st.markdown(f"""
+                <a href="{course['url']}" target="_blank" class="resource-link">
+                    <strong>{course['title']}</strong><br>
+                    <span style="color: #64748b;">{course['provider']}</span>
+                </a>
+                """, unsafe_allow_html=True)
         
         st.markdown("---")
         
-        st.markdown("### 📋 ML Project Checklist")
+        # Documentation
+        st.markdown('<p class="section-header">Documentation & Tutorials</p>', unsafe_allow_html=True)
         
-        checklist = [
-            "☐ **Problem Definition:** Clearly define the business problem and success metrics",
-            "☐ **Data Assessment:** Evaluate data quality, completeness, and potential biases",
-            "☐ **Exploratory Data Analysis:** Understand distributions, correlations, and patterns",
-            "☐ **Feature Engineering:** Create meaningful features from raw data",
-            "☐ **Model Selection:** Choose appropriate algorithms based on requirements",
-            "☐ **Validation Strategy:** Implement proper cross-validation and out-of-time testing",
-            "☐ **Hyperparameter Tuning:** Optimize model parameters systematically",
-            "☐ **Model Interpretation:** Ensure the model's decisions can be explained",
-            "☐ **Bias and Fairness:** Check for discriminatory patterns in predictions",
-            "☐ **Documentation:** Document methodology, assumptions, and limitations",
-            "☐ **Deployment Planning:** Plan for production deployment and monitoring",
-            "☐ **Monitoring Setup:** Implement model performance and drift monitoring"
+        col1, col2 = st.columns(2)
+        docs = RESOURCES["Documentation & Tutorials"]
+        
+        for i, doc in enumerate(docs):
+            with col1 if i % 2 == 0 else col2:
+                st.markdown(f"""
+                <a href="{doc['url']}" target="_blank" class="resource-link">
+                    <strong>{doc['title']}</strong><br>
+                    <span style="color: #64748b;">{doc['description']}</span>
+                </a>
+                """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Research
+        st.markdown('<p class="section-header">Research & Papers</p>', unsafe_allow_html=True)
+        
+        for paper in RESOURCES["Research & Papers"]:
+            st.markdown(f"""
+            <a href="{paper['url']}" target="_blank" class="resource-link">
+                <strong>{paper['title']}</strong><br>
+                <span style="color: #64748b;">{paper['description']}</span>
+            </a>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Tools
+        st.markdown('<p class="section-header">Tools & Libraries</p>', unsafe_allow_html=True)
+        
+        cols = st.columns(4)
+        tools = RESOURCES["Tools & Libraries"]
+        
+        for i, tool in enumerate(tools):
+            with cols[i % 4]:
+                st.markdown(f"""
+                <a href="{tool['url']}" target="_blank" class="resource-link" style="text-align: center;">
+                    <strong>{tool['title']}</strong><br>
+                    <span style="color: #64748b; font-size: 0.8rem;">{tool['description']}</span>
+                </a>
+                """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Checklist
+        st.markdown('<p class="section-header">ML Project Checklist</p>', unsafe_allow_html=True)
+        
+        checklist_items = [
+            ("Problem Definition", "Define business problem, success metrics, and constraints"),
+            ("Data Assessment", "Evaluate quality, completeness, biases, and privacy requirements"),
+            ("EDA & Feature Engineering", "Understand distributions, create meaningful features"),
+            ("Model Selection", "Choose algorithms based on requirements and constraints"),
+            ("Validation Strategy", "Design proper cross-validation and holdout testing"),
+            ("Hyperparameter Tuning", "Systematic optimization with appropriate search methods"),
+            ("Interpretability", "Ensure decisions can be explained (SHAP, LIME)"),
+            ("Bias & Fairness", "Check for discriminatory patterns across protected groups"),
+            ("Documentation", "Document methodology, assumptions, limitations"),
+            ("Deployment", "Plan production deployment, API design, scaling"),
+            ("Monitoring", "Implement performance tracking, drift detection, alerts"),
+            ("Governance", "Establish retraining triggers, approval workflows, audit trails")
         ]
         
-        for item in checklist:
-            st.markdown(item)
+        col1, col2 = st.columns(2)
+        
+        for i, (item, desc) in enumerate(checklist_items):
+            with col1 if i % 2 == 0 else col2:
+                st.markdown(f"""
+                <div class="info-box" style="padding: 0.75rem;">
+                    <strong>☐ {item}</strong><br>
+                    <span style="color: #64748b; font-size: 0.9rem;">{desc}</span>
+                </div>
+                """, unsafe_allow_html=True)
 
 # ============================================================================
 # RUN APPLICATION

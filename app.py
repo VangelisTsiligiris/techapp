@@ -2401,21 +2401,40 @@ def main():
     
     st.markdown("---")
     st.markdown("""
-        <div style="text-align: center; padding: 2rem 1rem; background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%); border-radius: 16px; margin-top: 3rem;">
-            <p style="color: #1a1a2e; font-size: 0.95rem; margin-bottom: 0.5rem;">
-                <strong style="color: #667eea;">Developed by Professor Vangelis Tsiligkiris</strong>
-            </p>
-            <p style="color: #2d3748; font-size: 0.85rem; margin-bottom: 0.75rem;">
-                Educational Tool for MSc Students in Fintech and Financial Engineering
-            </p>
-            <p style="color: #2d3748; font-size: 0.8rem; margin: 0;">
-                © 2024 | Licensed under the 
-                <a href="https://opensource.org/licenses/MIT" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">MIT License</a>
-            </p>
-            <p style="color: #4a5568; font-size: 0.75rem; margin-top: 0.5rem;">
-                This tool is provided for educational purposes. Always consult domain experts for production implementations.
+    <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 2.5rem 2rem; margin-top: 3rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <h3 style="color: white; margin: 0; font-size: 1.3rem; font-weight: 700;">Fintech AI/ML Advisor</h3>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-top: 0.5rem;">
+                Educational Tool for MSc Students
             </p>
         </div>
+    
+        <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 1rem;">
+            <p style="color: #667eea; font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
+                👨‍🏫 Developed by Professor Vangelis Tsiligkiris
+            </p>
+            <p style="color: rgba(255,255,255,0.95); font-size: 0.85rem; margin: 0;">
+                Designed for students in Fintech, Financial Engineering, and Data Science programs
+            </p>
+        </div>
+        
+        <div style="text-align: center;">
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 0.5rem;">
+                © 2024 Professor Vangelis Tsiligkiris | Licensed under the 
+                <a href="https://opensource.org/licenses/MIT" target="_blank" 
+                style="color: #4facfe; text-decoration: none; font-weight: 600;">MIT License</a>
+            </p>
+            <p style="color: rgba(255,255,255,0.75); font-size: 0.75rem; margin: 0; font-style: italic;">
+                This educational tool is provided as-is for learning purposes. Always validate with domain experts for production use.
+            </p>
+        </div>
+    
+        <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin: 0;">
+                Built with Streamlit, Plotly, and Python | Version 1.0 | 2024
+            </p>
+        </div>
+    </div>
     """, unsafe_allow_html=True)  
 
 

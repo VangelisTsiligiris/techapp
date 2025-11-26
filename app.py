@@ -2419,7 +2419,7 @@ def main():
         
        <div style="text-align: center;">
             <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 0.5rem;">
-                © 2024 Professor Vangelis Tsiligkiris | Licensed under the 
+                © 2025 Professor Vangelis Tsiligkiris | Licensed under the 
                 <a href="https://opensource.org/licenses/MIT" target="_blank" 
                 style="color: #4facfe; text-decoration: none; font-weight: 600;">MIT License</a>
             </p>
@@ -2430,7 +2430,7 @@ def main():
     
        <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin: 0;">
-                Built with Streamlit, Plotly, and Python | Version 1.0 | 2024
+                Built with Streamlit, Plotly, and Python | Version 1.0 | 2025
             </p>
        </div>
     </div>

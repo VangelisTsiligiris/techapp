@@ -2398,9 +2398,6 @@ def main():
     # ========================================================================
     # FOOTER (ADD THIS HERE - appears on all pages)
     # ========================================================================
-    # ========================================================================
-# FOOTER (appears on all pages)
-# ========================================================================
     st.markdown("---")
     st.markdown("""
     <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 2.5rem 2rem; margin-top: 3rem;">
@@ -2437,6 +2434,7 @@ def main():
             </p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()

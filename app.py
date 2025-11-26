@@ -1,6 +1,5 @@
 """
-Fintech AI/ML Advisor - Educational Tool for MSc Students
-Premium Edition with Enhanced UI and Comprehensive Content
+Fintech AI/ML Portal - Educational Tool Students
 """
 
 import streamlit as st
@@ -10,7 +9,7 @@ import plotly.graph_objects as go
 
 # Page configuration
 st.set_page_config(
-    page_title="Fintech AI/ML Advisor",
+    page_title="Fintech AI/ML Portal",
     page_icon="💹",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -1825,8 +1824,8 @@ def main():
     st.sidebar.markdown("""
     <div style="text-align: center; padding: 1.5rem 0;">
         <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💹</div>
-        <h2 style="color: white; margin: 0; font-size: 1.5rem; font-weight: 700;">FinAI Advisor</h2>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.5rem;">ML Decision Support for Fintech</p>
+        <h2 style="color: white; margin: 0; font-size: 1.5rem; font-weight: 700;">FinTech AI/ML Portal</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.5rem;">AI/ML Information and Decision Support for Fintech Ideas</p>
     </div>
     """, unsafe_allow_html=True)
     

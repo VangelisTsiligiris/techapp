@@ -2428,7 +2428,7 @@ def main():
             </p>
        </div>
     
-        <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+       <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin: 0;">
                 Built with Streamlit, Plotly, and Python | Version 1.0 | 2024
             </p>

@@ -1859,7 +1859,7 @@ def main():
         # Hero Section
         st.markdown("""
         <div class="hero-container">
-            <h1 class="hero-title">Fintech AI/ML Advisor</h1>
+            <h1 class="hero-title">Fintech AI/ML Portal</h1>
             <p class="hero-subtitle">Your intelligent guide to selecting the right AI and machine learning approach for financial technology innovation</p>
             <div class="stats-container">
                 <div class="stat-card">

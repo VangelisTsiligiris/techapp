@@ -2409,13 +2409,13 @@ def main():
        </div>
     
        <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 1rem;">
-            <p style="color: #667eea; font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
-                👨‍🏫 Developed by Professor Vangelis Tsiligkiris
-            </p>
-            <p style="color: rgba(255,255,255,0.95); font-size: 0.85rem; margin: 0;">
-                Designed for students in Fintech, Financial Engineering, and Data Science programs
-            </p>
-       </div>
+        <p style="color: #667eea; font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
+            👨‍🏫 Developed by <a href="https://www.ntu.ac.uk/staff-profiles/business/vangelis-tsiligkiris" target="_blank" style="color: #4facfe; text-decoration: none; font-weight: 700; border-bottom: 2px solid #4facfe;">Professor Vangelis Tsiligkiris</a>
+        </p>
+        <p style="color: rgba(255,255,255,0.95); font-size: 0.85rem; margin: 0;">
+            Designed for students in Fintech, Financial Engineering, and Data Science programs
+        </p>
+        </div>
         
        <div style="text-align: center;">
             <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 0.5rem;">

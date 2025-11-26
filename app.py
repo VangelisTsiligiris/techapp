@@ -2398,27 +2398,26 @@ def main():
     # ========================================================================
     # FOOTER (appears on all pages)
     # ========================================================================
-    
     st.markdown("---")
     st.markdown("""
     <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 20px; padding: 2.5rem 2rem; margin-top: 3rem;">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
+       <div style="text-align: center; margin-bottom: 1.5rem;">
             <h3 style="color: white; margin: 0; font-size: 1.3rem; font-weight: 700;">Fintech AI/ML Advisor</h3>
             <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-top: 0.5rem;">
                 Educational Tool for MSc Students
             </p>
-        </div>
+       </div>
     
-        <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 1rem;">
+       <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 1rem;">
             <p style="color: #667eea; font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
                 👨‍🏫 Developed by Professor Vangelis Tsiligkiris
             </p>
             <p style="color: rgba(255,255,255,0.95); font-size: 0.85rem; margin: 0;">
                 Designed for students in Fintech, Financial Engineering, and Data Science programs
             </p>
-        </div>
+       </div>
         
-        <div style="text-align: center;">
+       <div style="text-align: center;">
             <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 0.5rem;">
                 © 2024 Professor Vangelis Tsiligkiris | Licensed under the 
                 <a href="https://opensource.org/licenses/MIT" target="_blank" 
@@ -2427,13 +2426,13 @@ def main():
             <p style="color: rgba(255,255,255,0.75); font-size: 0.75rem; margin: 0; font-style: italic;">
                 This educational tool is provided as-is for learning purposes. Always validate with domain experts for production use.
             </p>
-        </div>
+       </div>
     
         <div style="text-align: center; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; margin: 0;">
                 Built with Streamlit, Plotly, and Python | Version 1.0 | 2024
             </p>
-        </div>
+       </div>
     </div>
     """, unsafe_allow_html=True)  
 
